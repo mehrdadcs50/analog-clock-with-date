@@ -13,14 +13,14 @@ class Clock:
         self.center = (self.width//2, self.height//2)
         self.clock_redius = self.width//2
         self.blue = (18, 30, 199)
+        self.glass = (143, 186, 201, 0.5)
+        
+    
         pygame.init()
+        
         self.screen = pygame.display.set_mode((self.width, self.height))
         pygame.display.set_caption("analog clock")
         self.clock = pygame.time.Clock()
-        self.date_location = (self.width//2 + 5, self.height//2 + 5)
-        self.glass = (143, 186, 201, 0.5)
-    
-    
     
     def numbers(self, number, size, position):
         font = pygame.font.SysFont("calibry", size, True, False)
