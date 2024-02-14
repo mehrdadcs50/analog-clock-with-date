@@ -11,9 +11,9 @@ class Clock:
         self.clk_color = (237, 157, 9)
         self.FPS = 60
         self.center = (self.width//2, self.height//2)
-        self.clock_redius = self.width//2
+        self.clock_radius = self.width//2
         self.blue = (18, 30, 199)
-        self.glass = (143, 186, 201, 0.5)
+        # self.glass = (143, 186, 201, 0.5)
         
     
         pygame.init()
@@ -36,7 +36,7 @@ class Clock:
     
     
     def draw_circle(self, screen):
-        pygame.draw.circle(self.screen, self.clk_color, self.center, self.clock_redius -10, 5)
+        pygame.draw.circle(self.screen, self.clk_color, self.center, self.clock_radius -10, 5)
         pygame.draw.circle(self.screen, self.clk_color, self.center, 8)
     
       
@@ -48,19 +48,19 @@ class Clock:
             
         
         for number in range(1, 13):
-            self.numbers(number, 40, self.polar_to_cartesian(self.clock_redius - 50, number* 30))
+            self.numbers(number, 40, self.polar_to_cartesian(self.clock_radius - 50, number* 30))
             
         
         for number in range(0,360,6):
             if number % 5:
                 pygame.draw.line(self.screen, self.clk_color, self.polar_to_cartesian(
-                    self.clock_redius -15, number),
-                                 self.polar_to_cartesian(self.clock_redius - 23, number), 2)
+                    self.clock_radius -15, number),
+                                 self.polar_to_cartesian(self.clock_radius - 23, number), 2)
 
             else:
                 pygame.draw.line(self.screen, self.clk_color, self.polar_to_cartesian(
-                    self.clock_redius -15, number),
-                                 self.polar_to_cartesian(self.clock_redius - 30, number), 4)
+                    self.clock_radius -15, number),
+                                 self.polar_to_cartesian(self.clock_radius - 30, number), 4)
                 
     
     def draw_clock_hand(self):
@@ -71,13 +71,13 @@ class Clock:
         hour = current_time.hour
         
         #Hour
-        R = self.clock_redius - 150
+        R = self.clock_radius - 150
         theta = (hour + minute/60 + second/3600) * (360 / 12)
         pygame.draw.line(self.screen, self.blue, self.center,
                          self.polar_to_cartesian(R, theta), 10)
         
         #Minute
-        R = self.clock_redius - 100
+        R = self.clock_radius - 100
         theta = (minute + second/360) * (360 / 60)
         pygame.draw.line(self.screen, self.blue, self.center,
                          self.polar_to_cartesian(R, theta), 9)
