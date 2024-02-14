@@ -83,7 +83,7 @@ class Clock:
                          self.polar_to_cartesian(R, theta), 9)
         
         #Second
-        R = self.clock_redius - 80
+        R = self.clock_radius - 80
         theta = second * (360 / 60)
         pygame.draw.line(self.screen, self.clk_color, self.center,
                          self.polar_to_cartesian(R, theta), 5)
