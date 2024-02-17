@@ -13,7 +13,7 @@ class Clock:
         self.center = (self.width//2, self.height//2)
         self.clock_radius = self.width//2
         self.blue = (18, 30, 199)
-        # self.glass = (143, 186, 201, 0.5)
+        self.glass = (50, 51, 56)
         
     
         pygame.init()
@@ -40,10 +40,16 @@ class Clock:
         pygame.draw.circle(self.screen, self.clk_color, self.center, 8)
     
       
-    
-    # def draw_date(self, screen):
-    #     _date = date.today()
-    #     pygame.draw.rect(self.screen,self.glass, pygame.Rect(230, 150, 30, 30))
+    def draw_date(self, screen):
+        _date = date.today()
+        current_time = datetime.now()
+        day = current_time.day
+        
+        pygame.draw.rect(self.screen,self.glass, pygame.Rect(235, 160, 30, 30))
+        date_font = pygame.font.Font(None, 36)       
+        date_text = date_font.render(str(day), True, "red")
+        self.screen.blit(date_text, (self.width // 2 - date_text.get_width() // 2,
+                                     (self.height // 2 - 75)- date_text.get_height() // 2)) 
         
             
         
@@ -89,17 +95,16 @@ class Clock:
                          self.polar_to_cartesian(R, theta), 5)
         
     
-    # Display date
+    # Display full of date
         # date_font = pygame.font.Font(None, 36)     #show full of date
         # date_text = date_font.render(current_time.strftime("%B %d, %Y"), True, "BLACK")
         # self.screen.blit(date_text, (self.width // 2 -
         #                              date_text.get_width() // 2, self.height - 90))
         
         
-    #display Data just day
-    
+    #display Date just day  blit(source, dest, area=None, special_flags=0) -> Rec
         date_font = pygame.font.Font(None, 36)       
-        date_text = date_font.render(str(day), True, "white")
+        date_text = date_font.render(str(day), True, "red")
         self.screen.blit(date_text, (self.width // 2 - date_text.get_width() // 2,
                                      (self.height // 2 - 75)- date_text.get_height() // 2))     
     
@@ -113,7 +118,7 @@ class Clock:
             self.screen.fill(self.bg_color)
             self.draw_circle(self.screen)
             self.draw_clock_hand()
-            # self.draw_date(self.screen)
+            self.draw_date(self.screen)
             pygame.display.update()
             self.clock.tick(self.FPS)
             
